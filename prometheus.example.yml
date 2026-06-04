@@ -1,0 +1,7 @@
+# Example Prometheus configuration for bbox7_exporter.
+# Interval >= 30s recommended (each scrape triggers a login on the box).
+scrape_configs:
+  - job_name: bbox
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['localhost:9311']

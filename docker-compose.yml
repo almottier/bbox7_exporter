@@ -1,0 +1,18 @@
+services:
+  bbox7_exporter:
+    image: ghcr.io/almottier/bbox7_exporter:latest
+    # build: .                         # use instead of image: to build locally
+    container_name: bbox7_exporter
+    restart: unless-stopped
+    ports:
+      - "9311:9311"
+    environment:
+      # Admin password of the box (required). Set it here or in a .env file.
+      BBOX_EXPORTER_PASSWORD: "${BBOX_EXPORTER_PASSWORD:?set BBOX_EXPORTER_PASSWORD}"
+      # Box IP to dial directly — avoids DNS / --add-host (TLS still verified
+      # against the endpoint host). Set this to your box's LAN IP.
+      # BBOX_EXPORTER_RESOLVE: "192.168.10.254"
+      # --- optional overrides (defaults shown) ---
+      # BBOX_EXPORTER_ENDPOINT: "https://mabbox.bytel.fr"
+      # BBOX_EXPORTER_ADDR: ":9311"
+      # BBOX_EXPORTER_METRICS_PATH: "/metrics"
